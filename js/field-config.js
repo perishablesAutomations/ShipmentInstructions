@@ -5,14 +5,14 @@ const FIELD_SECTIONS = [
   {
     title: "Checklist de documentos",
     fields: [
-      { key: "dc", label: "DC (Aplica / No aplica)", type: "text" },
-      { key: "da", label: "DA (Aplica / No aplica)", type: "text" },
-      { key: "thermometer", label: "Thermometer", type: "text" },
-      { key: "vacuum", label: "Vacuum", type: "text" },
-      { key: "fitosanitary", label: "Fitosanitary", type: "text" },
-      { key: "certificadoOrigen", label: "Certificado de Origen", type: "text" },
-      { key: "paletizado", label: "Paletizado", type: "text" },
-      { key: "cargosAdicionales", label: "Cargos adicionales", type: "text" }
+      { key: "dc", label: "DC", type: "toggle" },
+      { key: "da", label: "DA", type: "toggle" },
+      { key: "thermometer", label: "Thermometer", type: "toggle" },
+      { key: "vacuum", label: "Vacuum", type: "toggle" },
+      { key: "fitosanitary", label: "Fitosanitary", type: "toggle" },
+      { key: "certificadoOrigen", label: "Certificado de Origen", type: "toggle" },
+      { key: "paletizado", label: "Paletizado", type: "toggle" },
+      { key: "cargosAdicionales", label: "Cargos adicionales", type: "toggle" }
     ]
   },
   {
