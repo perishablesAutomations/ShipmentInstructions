@@ -38,6 +38,40 @@ const FormRenderer = {
   _buildField(f) {
     const wrap = document.createElement("div");
     wrap.className = "field";
+
+    if (f.type === "toggle") {
+      const label = document.createElement("label");
+      label.textContent = f.label;
+      wrap.appendChild(label);
+
+      const row = document.createElement("div");
+      row.className = "toggle-row";
+
+      const switchWrap = document.createElement("label");
+      switchWrap.className = "toggle-switch";
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.id = "f_" + f.key;
+      input.name = f.key;
+      const track = document.createElement("span");
+      track.className = "toggle-track";
+      switchWrap.appendChild(input);
+      switchWrap.appendChild(track);
+
+      const stateLabel = document.createElement("span");
+      stateLabel.className = "toggle-label";
+      stateLabel.textContent = "No aplica";
+      input.addEventListener("change", () => {
+        stateLabel.textContent = input.checked ? "Aplica" : "No aplica";
+        stateLabel.classList.toggle("on", input.checked);
+      });
+
+      row.appendChild(switchWrap);
+      row.appendChild(stateLabel);
+      wrap.appendChild(row);
+      return wrap;
+    }
+
     const label = document.createElement("label");
     label.textContent = f.label;
     label.setAttribute("for", "f_" + f.key);
@@ -69,7 +103,12 @@ const FormRenderer = {
     FIELD_SECTIONS.forEach(section => {
       section.fields.forEach(f => {
         const el = document.getElementById("f_" + f.key);
-        values[f.key] = el ? el.value : "";
+        if (!el) { values[f.key] = ""; return; }
+        if (f.type === "toggle") {
+          values[f.key] = el.checked ? "Aplica" : "No aplica";
+        } else {
+          values[f.key] = el.value;
+        }
       });
     });
     return values;
@@ -79,7 +118,14 @@ const FormRenderer = {
     FIELD_SECTIONS.forEach(section => {
       section.fields.forEach(f => {
         const el = document.getElementById("f_" + f.key);
-        if (el && data[f.key] !== undefined) el.value = data[f.key];
+        if (!el || data[f.key] === undefined) return;
+        if (f.type === "toggle") {
+          const aplica = (data[f.key] || "").trim().toLowerCase() === "aplica";
+          el.checked = aplica;
+          el.dispatchEvent(new Event("change"));
+        } else {
+          el.value = data[f.key];
+        }
       });
     });
   }
