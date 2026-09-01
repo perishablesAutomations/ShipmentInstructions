@@ -2,10 +2,10 @@
 // cada flujo (Trigger HTTP -> "Cuando se completa" te la muestra, o
 // entra a la acción del trigger y copia "HTTP URL").
 const CONFIG = {
-FLOW_LOGIN: "https://bd4a763d737defaeacf0e99a4d082f.58.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/27/workflows/aefaa172a6f5448bb4ee41ff7266acc0/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YQas8-PtNRiA60nFWxitLmlsPxosGw93OpenmIfHNqA",
+  FLOW_LOGIN: "https://bd4a763d737defaeacf0e99a4d082f.58.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/27/workflows/aefaa172a6f5448bb4ee41ff7266acc0/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YQas8-PtNRiA60nFWxitLmlsPxosGw93OpenmIfHNqA",
   FLOW_CREAR: "https://bd4a763d737defaeacf0e99a4d082f.58.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/08/workflows/46af808da56c444aa5cd652c60ffc67a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CP566oOf-CJwcIzMGMESl-kHE-iTkK91QxNoKX7Qji0",
   FLOW_ACTUALIZAR: "https://bd4a763d737defaeacf0e99a4d082f.58.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/14/workflows/d13fd82f74834f0cae9e703d0fbf70ee/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=O3bBzuVGcJ6e31bYzsCOSw_22cD18j_ANpEc3xdXsr0",
-  FLOW_ENVIAR_CORREO: "https://prod-00.region.logic.azure.com:443/workflows/PON_AQUI_ENVIAR",
+  FLOW_ENVIAR_CORREO: "https://bd4a763d737defaeacf0e99a4d082f.58.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/01/workflows/2b198638f0ee46648c3ea57e02e81320/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=109kSX_5BL5uRL9ZhSAfvGK6PdB5Uo0PUTqdh4LUM9U",
   // Estos dos todavía no los hemos construido -- ver nota en el chat.
   FLOW_CONSULTAR: "https://prod-00.region.logic.azure.com:443/workflows/PON_AQUI_CONSULTAR",
   FLOW_DETALLE: "https://prod-00.region.logic.azure.com:443/workflows/PON_AQUI_DETALLE",
