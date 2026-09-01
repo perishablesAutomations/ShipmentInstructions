@@ -2,7 +2,7 @@
 // cada flujo (Trigger HTTP -> "Cuando se completa" te la muestra, o
 // entra a la acción del trigger y copia "HTTP URL").
 const CONFIG = {
-  FLOW_LOGIN: "https://prod-00.region.logic.azure.com:443/workflows/PON_AQUI_LOGIN",
+FLOW_LOGIN: "https://bd4a763d737defaeacf0e99a4d082f.58.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/27/workflows/aefaa172a6f5448bb4ee41ff7266acc0/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YQas8-PtNRiA60nFWxitLmlsPxosGw93OpenmIfHNqA",
   FLOW_CREAR: "https://prod-00.region.logic.azure.com:443/workflows/PON_AQUI_CREAR",
   FLOW_ACTUALIZAR: "https://prod-00.region.logic.azure.com:443/workflows/PON_AQUI_ACTUALIZAR",
   FLOW_ENVIAR_CORREO: "https://prod-00.region.logic.azure.com:443/workflows/PON_AQUI_ENVIAR",
