@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultar instrucciones</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">Instrucciones Perecederos<small>Air Logistics · Facturación y embarque</small></div>
+  <div class="who">
+    <div><div class="name" id="whoName">—</div><div class="role" id="whoCargo">—</div></div>
+    <button class="link" id="logoutBtn">Salir</button>
+  </div>
+</div>
+
+<main>
+  <p><a href="home.html">← Volver al home</a></p>
+  <h1>Consultar instrucciones</h1>
+  <p class="meta-line">Busca por nombre de cliente para ver todas sus versiones.</p>
+
+  <div class="card" style="margin:18px 0;">
+    <div class="field" style="margin-bottom:0;">
+      <label for="buscador">Cliente</label>
+      <input type="text" id="buscador" placeholder="Escribe el nombre del cliente...">
+    </div>
+  </div>
+
+  <div id="errorBox" class="error-banner"></div>
+
+  <div class="card">
+    <table id="resultTable" style="display:none;">
+      <thead>
+        <tr><th>Cliente</th><th>Versión</th><th>Código SALOG</th><th>Última modificación</th><th>Modificado por</th></tr>
+      </thead>
+      <tbody id="resultBody"></tbody>
+    </table>
+    <div class="empty-state" id="resultEmpty">
+      <h3>Escribe un nombre de cliente</h3>
+      <p>Los resultados van a aparecer aquí a medida que buscas.</p>
+    </div>
+  </div>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/consultar.js"></script>
+</body>
+</html>

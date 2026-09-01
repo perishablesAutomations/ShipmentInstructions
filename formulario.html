@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Instrucción</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">Instrucciones Perecederos<small>Air Logistics · Facturación y embarque</small></div>
+  <div class="who">
+    <div><div class="name" id="whoName">—</div><div class="role" id="whoCargo">—</div></div>
+    <button class="link" id="logoutBtn">Salir</button>
+  </div>
+</div>
+
+<main>
+  <p><a href="home.html">← Volver al home</a></p>
+  <h1 id="heading">Crear instrucción</h1>
+  <p class="meta-line" id="subheading">Registra los datos del cliente. Los campos que no apliquen se pueden dejar vacíos.</p>
+
+  <div id="errorBox" class="error-banner"></div>
+  <div id="okBox" class="error-banner" style="background:var(--ok-soft); color:var(--ok); border-color:#B9E3C6;"></div>
+
+  <div class="card" style="margin:18px 0 16px;">
+    <div class="field-grid">
+      <div class="field">
+        <label for="clienteInput">Cliente</label>
+        <input type="text" id="clienteInput" placeholder="Nombre del cliente">
+      </div>
+      <div class="field">
+        <label>Versión</label>
+        <div class="field-readonly" id="versionDisplay">Se calcula automáticamente al guardar</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="formContainer"></div>
+
+  <div class="actions-bar">
+    <button class="btn-secondary" id="cancelBtn" type="button">Cancelar</button>
+    <button class="btn-primary" id="saveBtn" type="button">Guardar instrucción</button>
+  </div>
+
+  <div class="card" id="sendCard" style="display:none; margin-top:22px;">
+    <h2>Enviar correo</h2>
+    <p class="meta-line">Instrucción guardada. Ahora puedes enviar el resumen a la cuenta correspondiente.</p>
+    <div class="actions-bar" style="border-top:none; padding-top:10px;">
+      <button class="btn-send" id="sendFacturacionBtn" type="button">Enviar instrucción de Facturación</button>
+      <button class="btn-send" id="sendClienteBtn" type="button">Enviar instrucción de Cliente/Embarque</button>
+    </div>
+  </div>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/field-config.js"></script>
+<script src="js/form-renderer.js"></script>
+<script src="js/formulario.js"></script>
+</body>
+</html>

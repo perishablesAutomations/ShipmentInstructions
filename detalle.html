@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalle de instrucción</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">Instrucciones Perecederos<small>Air Logistics · Facturación y embarque</small></div>
+  <div class="who">
+    <div><div class="name" id="whoName">—</div><div class="role" id="whoCargo">—</div></div>
+    <button class="link" id="logoutBtn">Salir</button>
+  </div>
+</div>
+
+<main>
+  <p><a href="home.html">← Volver al home</a></p>
+  <div id="errorBox" class="error-banner"></div>
+
+  <div id="content" style="display:none;">
+    <h1 id="clienteTitulo">—</h1>
+    <p class="meta-line" id="metaVersion"></p>
+    <p class="meta-line" id="metaModificado"></p>
+
+    <div class="actions-bar" style="border-top:none; justify-content:flex-start; margin-top:10px;">
+      <a class="btn btn-secondary" id="editarLink" href="#">Editar esta instrucción</a>
+    </div>
+
+    <div id="formContainer" style="margin-top:20px;"></div>
+  </div>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/field-config.js"></script>
+<script src="js/form-renderer.js"></script>
+<script>
+(async function () {
+  const session = AUTH.requireSession();
+  if (!session) return;
+
+  document.getElementById("whoName").textContent = session.nombre;
+  document.getElementById("whoCargo").textContent = session.cargo || "";
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    AUTH.logout();
+    window.location.href = "index.html";
+  });
+
+  const id = new URLSearchParams(window.location.search).get("id");
+  const errorBox = document.getElementById("errorBox");
+  const content = document.getElementById("content");
+
+  if (!id) {
+    errorBox.textContent = "Falta el id de la instrucción en el link.";
+    errorBox.classList.add("show");
+    return;
+  }
+
+  try {
+    const data = await API.obtenerInstruccion(session, id);
+    document.getElementById("clienteTitulo").textContent = data.cliente || "—";
+    document.getElementById("metaVersion").textContent = "Versión " + (data.version || "—") + " · Código SALOG: " + (data.codigoSalog || "—");
+    const fecha = data.modified ? new Date(data.modified).toLocaleString("es-CO") : "—";
+    document.getElementById("metaModificado").textContent =
+      "Última actualización: " + fecha + " · Por: " + (data.modificadoPor || data.creadoPor || "—");
+    document.getElementById("editarLink").href = "formulario.html?modo=actualizar&id=" + id;
+
+    FormRenderer.render(document.getElementById("formContainer"));
+    FormRenderer.setValues(data);
+    // Vista de solo lectura: deshabilita todos los campos generados.
+    document.querySelectorAll("#formContainer input, #formContainer select, #formContainer textarea")
+      .forEach(el => el.disabled = true);
+
+    content.style.display = "block";
+  } catch (err) {
+    errorBox.textContent = "No se pudo cargar la instrucción: " + err.message;
+    errorBox.classList.add("show");
+  }
+})();
+</script>
+</body>
+</html>

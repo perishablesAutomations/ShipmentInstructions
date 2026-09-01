@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home · Instrucciones Perecederos</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">Instrucciones Perecederos<small>Air Logistics · Facturación y embarque</small></div>
+  <div class="who">
+    <div>
+      <div class="name" id="whoName">—</div>
+      <div class="role" id="whoCargo">—</div>
+    </div>
+    <button class="link" id="logoutBtn">Salir</button>
+  </div>
+</div>
+
+<main>
+  <div class="action-grid">
+    <a class="action-card" href="formulario.html?modo=crear">
+      <h2>Crear instrucción</h2>
+      <p>Registrar un cliente nuevo o una versión desde cero.</p>
+    </a>
+    <a class="action-card" href="consultar.html">
+      <h2>Consultar instrucciones</h2>
+      <p>Buscar por cliente y ver el historial de versiones.</p>
+    </a>
+  </div>
+
+  <h2>Instrucciones creadas hoy</h2>
+  <div id="errorBox" class="error-banner"></div>
+  <div class="card" style="margin-top:10px;">
+    <table id="hoyTable" style="display:none;">
+      <thead>
+        <tr><th>Cliente</th><th>Versión</th><th>Hora</th><th></th></tr>
+      </thead>
+      <tbody id="hoyBody"></tbody>
+    </table>
+    <div class="empty-state" id="hoyEmpty">
+      <h3>Todavía no has creado nada hoy</h3>
+      <p>Lo que registres o actualices hoy va a aparecer aquí.</p>
+    </div>
+  </div>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
